@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mouse Trail</title>
+</head>
+<body>
+<div id='mousetrail' onmousemove="mouse(event)">
+
+</div>
+</body>
+<script>
+var y;
+var x;
+var ball = 0;
+setInterval(function() {
+  document.getElementById('mousetrail').innerHTML += "<div class='ball' id='ball"+ball+"' style='top:"+y+"px;left:"+x+"px;'></div>";
+  setTimeout(function() {
+  	document.getElementById("mousetrail").firstElementChild.outerHTML = "";
+  },100);
+  ball++
+},1);
+// Functions
+function mouse(event) {
+  x = event.clientX;
+  y = event.clientY;
+  return x + "," + y;
+}
+</script>
+<style>
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: lightblue;
+  border: cyan;
+  border-radius: 50%;
+  position: absolute;
+}
+#mousetrail {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ top: 0px;
+ left: 0px;
+}
+</style>
+</html>
